@@ -1,5 +1,5 @@
 {
   "ubuntu": "Ubuntu",
-  "windows": "Windows Boot Manager",
+  "windows": "Windows Boot Manager (on /dev/nvme0n1p1)",
   "bazzite": "Bazzite"
 }

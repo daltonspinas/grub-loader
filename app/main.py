@@ -32,7 +32,12 @@ def boot_cfg() -> Response:
             f"# alias={alias}",
             f"# mode={marker}",
             f"set default=\"{target}\"",
-            "configfile /boot/grub/grub.cfg",
+            "# Prefer local GRUB prefix path; fall back to absolute path.",
+            "if [ -s ${prefix}/grub.cfg ]; then",
+            "  configfile ${prefix}/grub.cfg",
+            "else",
+            "  configfile /boot/grub/grub.cfg",
+            "fi",
             "",
         ]
     )

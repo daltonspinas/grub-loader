@@ -1,0 +1,20 @@
+rest_command:
+  grub_loader_set_oneshot:
+    url: "http://192.168.1.128:8086/oneshot"
+    method: POST
+    headers:
+      Content-Type: application/json
+    payload: '{"alias": "{{ alias }}"}'
+
+automation:
+  - id: reboot_to_windows_once
+    alias: Reboot to Windows Once
+    mode: single
+    triggers: []
+    actions:
+      - action: rest_command.grub_loader_set_oneshot
+        data:
+          alias: windows
+      - action: button.press
+        target:
+          entity_id: button.server_reboot
